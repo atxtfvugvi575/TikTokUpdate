@@ -1,0 +1,41 @@
+{
+"schema_version": 1,
+"channel": "https://t.me/ducucug18",
+"apps": [
+{
+"id": "tiktok",
+"name": "TikTok",
+"name_ar": "تيك توك",
+"version": "",
+"download_url": ""
+},
+{
+"id": "capcut",
+"name": "CapCut",
+"name_ar": "كاب كات",
+"version": "",
+"download_url": ""
+},
+{
+"id": "alight_motion",
+"name": "Alight Motion",
+"name_ar": "أليت موشن",
+"version": "",
+"download_url": ""
+},
+{
+"id": "inshot",
+"name": "InShot",
+"name_ar": "إنشوت",
+"version": "",
+"download_url": ""
+},
+{
+"id": "vivacut",
+"name": "VivaCut",
+"name_ar": "فيفا كات",
+"version": "",
+"download_url": ""
+}
+]
+}
