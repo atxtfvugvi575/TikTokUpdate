@@ -1,0 +1,75 @@
+<!DOCTYPE html><html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>تحديثات التطبيقات - مديا</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#080808;color:#fff;font-family:Arial,sans-serif}
+header{text-align:center;padding:30px 15px;background:#141414;border-bottom:1px solid #333}
+h1{color:#e6bd62}
+header p{color:#bbb}
+main{max-width:700px;margin:20px auto;padding:0 15px}
+.card{background:#151515;border:1px solid #333;border-radius:14px;padding:20px;margin-bottom:15px}
+.card h2{color:#e6bd62;margin-top:0}
+.version{color:#bbb;margin-bottom:15px}
+.button{display:inline-block;background:#e6bd62;color:#111;text-decoration:none;padding:12px 20px;border-radius:8px;font-weight:bold}
+.note{color:#aaa}
+footer{text-align:center;padding:25px}
+footer a{color:#e6bd62}
+</style>
+</head>
+<body>
+<header>
+<h1>تحديثات التطبيقات</h1>
+<p>كل تحديثات تطبيقاتك بمكان واحد</p>
+</header>
+<main id="apps">
+<p>جاري تحميل التطبيقات...</p>
+</main>
+<footer>
+<a href="https://t.me/ducucug18" target="_blank">قناة تيليجرام</a>
+<p>تحديثات التطبيقات - مديا</p>
+</footer>
+<script>
+fetch('./apps_updates.json')
+.then(function(response){
+if(!response.ok) throw new Error('error');
+return response.json();
+})
+.then(function(data){
+var box=document.getElementById('apps');
+box.innerHTML='';
+data.apps.forEach(function(app){
+var card=document.createElement('div');
+card.className='card';
+var title=document.createElement('h2');
+title.textContent=app.name_ar||app.name;
+var version=document.createElement('div');
+version.className='version';
+version.textContent='الإصدار: '+(app.version||'قريباً');
+card.appendChild(title);
+card.appendChild(version);
+if(app.download_url){
+var link=document.createElement('a');
+link.className='button';
+link.href=app.download_url;
+link.target='_blank';
+link.rel='noopener noreferrer';
+link.textContent='تحميل التطبيق';
+card.appendChild(link);
+}else{
+var note=document.createElement('p');
+note.className='note';
+note.textContent='رابط التحميل قريباً';
+card.appendChild(note);
+}
+box.appendChild(card);
+});
+})
+.catch(function(){
+document.getElementById('apps').innerHTML='<p>تعذر تحميل التطبيقات. تحقق من ملف apps_updates.json.</p>';
+});
+</script>
+</body>
+</html>
